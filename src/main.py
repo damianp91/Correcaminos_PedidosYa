@@ -4,6 +4,7 @@ from settings import *
 from random import randrange, choice
 #import images
 from constructor import *
+from colitions import *
 
 pygame.init()
 
@@ -14,7 +15,7 @@ pygame.display.set_caption("Correcaminos PedidosYa.")
 
 coin_x = 20
 coin_y = 20
-nun_coin = 6
+nun_coin = 25
 
 coins = []
 
@@ -23,7 +24,7 @@ block = const_fi(point_x=randrange(0, WIDTH - coin_x), point_y=randrange(0, HEIG
 
 for coin in range(nun_coin):
     coins.append(const_fi(randrange(0, WIDTH - coin_x), randrange(0, HEIGHT - coin_y),
-                coin_x, coin_y, (255, 255, 100), 45))
+                coin_x, coin_y, (255, 255, 100), 35))
 
 while True:
     
@@ -73,6 +74,10 @@ while True:
     elif block["direction"] == DL:
         block["block"].top += 1
         block["block"].left -=  1
+    
+    for coin in coins[:]:
+        if detected_colition(coin["block"], block["block"]):
+            coins.remove(coin)
     
     display.fill((0, 0, 0))
     

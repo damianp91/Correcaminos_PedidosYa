@@ -5,7 +5,7 @@ from random import randrange
 
 
 def const_fi(point_x = 0, point_y = 0, fig_w = 50, fig_h = 50, 
-    color = (255, 255, 255), direction = 3, ratio : int = 0, image = None) -> (dict):
+    color = (255, 255, 255), direction = 3, ratio = -1, image = None) -> (dict):
     """
         Build a dictionary with specific elements for create a block of type Rect with it color,
         dimensions and shape.

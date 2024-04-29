@@ -2,7 +2,6 @@
 
 def point_in_block(point : tuple, figure) -> (bool):
     """_summary_
-
     Args:
         point (tuple, figure): _description_
     Returns:
@@ -15,10 +14,8 @@ def point_in_block(point : tuple, figure) -> (bool):
 
 def detected_colition(block_1, block_2) -> (bool):
     """_summary_
-
     Args:
         block_1 (_type_): _description_
-
     Returns:
         _type_: _description_
     """
