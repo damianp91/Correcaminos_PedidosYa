@@ -1,11 +1,15 @@
 
 
 def point_in_block(point : tuple, figure) -> (bool):
-    """_summary_
+    """
+    The function `point_in_block` checks if a given point lies within a specified block figure.
     Args:
-        point (tuple, figure): _description_
+        param point (tuple):
+            A tuple representing the coordinates of a point in a 2D plane
+        param figure (Rect):
+            A rect that will be detect with points of coordinate tuple 'point'.
     Returns:
-        _type_: _description_
+        a boolean value indicating whether the given point is inside the specified figure block.
     """
     x, y = point
     
@@ -13,11 +17,19 @@ def point_in_block(point : tuple, figure) -> (bool):
 
 
 def detected_colition(block_1, block_2) -> (bool):
-    """_summary_
+    """
+    The function `detected_colition` checks for collision between two blocks by verifying if any of the
+    corners of one block are inside the other block.
     Args:
-        block_1 (_type_): _description_
-    Returns:
-        _type_: _description_
+        param block_1 (Rect):
+            Rect with coordinates points for detected
+            
+        param block_2 (Rect):
+            Rect with coordinates points for detected
+        Return: 
+            Returning a boolean value indicating whether a
+            collision has been detected between two blocks (`block_1` and `block_2`). If a collision is
+            detected, it returns `True`; otherwise, it returns `False`.
     """
     colition = False
     
@@ -32,21 +44,33 @@ def detected_colition(block_1, block_2) -> (bool):
 
 
 def cal_ratio(figure) -> (int):
-    """_summary_
+    """
+    The function `cal_ratio` calculates the ratio of the height of a figure to 2.
     Args:
-        figure (_type_): _description_
-    Returns:
-        _type_: _description_
+        param figure (Rect):
+            Structure that has a `height` attribute. The function then calculates
+            and returns half of the `height` attribute of the `figure` object
+    Return:
+        The function `cal_ratio` is returning half of the height of the input figure.
     """
     return figure.height // 2
 
 
 def distance_between_points(point_1 : tuple, point_2 : tuple) -> (float):
-    """_summary_
+    """
+    The function calculates the Euclidean distance between two points in a 2D plane.
     Args:
-        point_1 (_type_): _description_
-    Returns:
-        _type_: _description_
+        param point_1 (tuple):
+            The `point_1` parameter is a tuple representing the coordinates of the first point
+            in a 2D plane. It should be in the format `(x1, y1)`, where `x1` and `y1` are the x and y
+            coordinates of the first point respectively
+        param point_2 (tuple):
+            The `point_2` parameter is a tuple representing the coordinates of the second point
+            in a two-dimensional space. It typically consists of two values: the x-coordinate and the
+            y-coordinate of the point
+    Return: 
+        The formula: sqrt((x2 - x1)^2 + (y2 - y1)^2). The function returns the
+        calculated distance as a float value.
     """
     x1, y1 = point_1
     x2, y2 = point_2
@@ -55,11 +79,18 @@ def distance_between_points(point_1 : tuple, point_2 : tuple) -> (float):
 
 
 def detected_colition_circle(figure_1, figure_2) -> (bool):
-    """_summary_
+    """
+    This Python function detects collision between two circles based on their radii and distances
+    between their centers.
     Args:
-        figure_1 (_type_): _description_
-    Returns:
-        _type_: _description_
+        param figure_1 (Rect):
+            Rect with coordinates points for detected
+        param figure_2 (Rect):
+            Rect with coordinates points for detected
+    Return:
+        Returning a boolean value indicating whether there is a collision between two circles
+        represented by `figure_1` and `figure_2`. If there is a
+        collision, it returns `True`, otherwise it returns `False`.
     """
     colition = False
     

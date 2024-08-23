@@ -10,12 +10,17 @@ center_y = HEIGHT // 2
 center_display = (center_x, center_y)
 size_display = (WIDTH, HEIGHT)
 origin_display = (0, 0)
-limit_road_rider = 601
+limit_road_rider = 741
 up_down_rider = 50
+size_botton = (280, 50)
+
+
+# Display
+display = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Correcaminos PedidosYa.")
 
 # Motion speed
 FPS = 60
-
 
 # Speed 
 SPEED = 10 # velocidad por pixeles
@@ -30,6 +35,7 @@ def color_surprise() -> (tuple):
     r = randrange(0, 255)
     g = randrange(0, 255)
     b = randrange(0, 255)
+    
     return (r, g, b)
 
 green = (0, 255, 0)
@@ -38,6 +44,7 @@ black = (0, 0, 0)
 yellow = (255, 255, 100)
 white = (255, 255, 255)
 blue = (0, 0, 255)
+deep_blue = (3, 0, 48)
 costume = (78, 87, 146)
 
 
@@ -63,8 +70,8 @@ coins = []
 
 
 # Size characters
-bici_w = 150
-bici_h = 150
+bici_w = 100
+bici_h = 100
 
 
 # Size background

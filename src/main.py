@@ -6,13 +6,10 @@ from constructor import *
 from colitions import *
 from motions import *
 
+
 pygame.init()
 
 clock = pygame.time.Clock()
-
-# Settings of screen
-display = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Correcaminos PedidosYa.")
 
 # Settings of font
 source = pygame.font.Font(None, 40)
@@ -20,10 +17,10 @@ source = pygame.font.Font(None, 40)
 # Create rider
 block = const_fi(0, 700, bici_w, bici_h, white, 0, -1, moto_bike)
 
-# Music
-playing_music = True
-
 avance = WIDTH + 100
+
+# Music 
+playing_music = True
 
 # Create coins
 for coin in range(nun_coin):
@@ -33,14 +30,15 @@ for coin in range(nun_coin):
 scroll = 0
 playing = True
 
+menu_init()
 
-# Pantalla comienzo
-# display.blit()
-
-# Music
-pygame.mixer.music.load("./src/sounds/starting_game.mp3") # Fondo de juego
+pygame.mixer.music.load("./src/sounds/while_game.mp3") # Fondo de juego
 pygame.mixer.music.play(-1, 2000)
 pygame.mixer.music.set_volume(0.2)
+
+mov_list_images(init_app, display)
+
+#video_play('./src/videos/Pickup.mp4')
 
 while playing:
     
@@ -77,6 +75,7 @@ while playing:
                 if playing_music:
                     pygame.mixer.music.unpause()
         
+        
         if event.type == KEYUP:
             if event.key == K_RIGHT:
                 move_rig = False
@@ -85,8 +84,7 @@ while playing:
             if event.key == K_UP:
                 move_up = False
             if event.key == K_DOWN:
-                move_dw = False
-    
+                move_dw = False 
     
     # Direction of the screen
     if move_up and block["block"].top >= limit_road_rider:
@@ -98,16 +96,19 @@ while playing:
     elif move_rig and block["block"].right <= WIDTH:
         block["block"].right += SPEED
     
-    for coin in coins[:]:
-        if detected_colition(coin["block"], block["block"]):
-            coins.remove(coin)
-            count_coins += 1
-            if count_coins >= nun_coin:
-                count_coins = 0
-                make_coins(nun_coin, coins, image_coin)
+    # for coin in coins[:]:
+    #     if detected_colition(coin["block"], block["block"]):
+    #         coins.remove(coin)
+    #         count_coins += 1
+    #         if count_coins >= nun_coin:
+    #             count_coins = 0
+    #             make_coins(nun_coin, coins, image_coin)
     
     
     # Blit text in the screen
+    
+    
+    
     text = source.render(f"Coins: {count_coins}", True, yellow)
     rect_text = text.get_rect()
     rect_text.center = (center_x, 12)
@@ -119,25 +120,29 @@ while playing:
     display.blit(text, rect_text)
     
     # Coins
-    for coin in coins:
-        display.blit(coin["img"], coin["block"])
+    # for coin in coins:
+    #     display.blit(coin["img"], coin["block"])
     
     # Vehicles
-    vehicle_1 = pygame.Rect(avance, 700, 200, 100)
-    vehicle_2 = pygame.Rect(avance + 1000, 810, 200, 100)
-    vehicle_3 = pygame.Rect(avance + 2000, 895, 200, 100)
-    vehicle_4 = pygame.Rect(avance + 2100, 810, 200, 100)
-    pygame.draw.rect(display, blue, vehicle_1, 0)
-    pygame.draw.rect(display, black, vehicle_2, 0)
-    pygame.draw.rect(display, yellow, vehicle_4, 0)
-    pygame.draw.rect(display, red, vehicle_3, 0)
+    v_1 = const_fi(avance, 700, 200, 100, white, 0, -1, vec_1)
+    v_2 = const_fi(avance + 1000, 810, 200, 100, white, 0, -1, vec_2)
+    v_3 = const_fi(avance + 2000, 895, 200, 100, white, 0, -1, vec_3)
+    v_4 = const_fi(avance + 2100, 810, 200, 100, white, 0, -1, vec_4)
+    v_5 = const_fi(avance + 3300, 700, 200, 100, white, 0, -1, vec_5)
+    v_6 = const_fi(avance + 3800, 895, 200, 100, white, 0, -1, vec_6)
+    display.blit(v_1["img"], v_1["block"])
+    display.blit(v_2["img"], v_2["block"])
+    display.blit(v_3["img"], v_3["block"])
+    display.blit(v_4["img"], v_4["block"])
+    display.blit(v_5["img"], v_5["block"])
+    display.blit(v_6["img"], v_6["block"])
     avance -= 4
     
     # Rider
     display.blit(block["img"], block["block"])
     
     # verificar imagen
-    pygame.draw.rect(display, (255, 0, 0), block["block"], 2)
+    #pygame.draw.rect(display, (255, 0, 0), block["block"], 2)
     
     pygame.display.flip()
 
